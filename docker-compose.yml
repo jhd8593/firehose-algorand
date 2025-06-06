@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  firehose:
+    build: .
+    volumes:
+      - ./output:/app/output
+    command: --start-block 50500000 --stop-block 50500010

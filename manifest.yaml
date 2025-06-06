@@ -1,0 +1,15 @@
+specVersion: v1.0.0
+package:
+  name: firehose-algorand
+  version: v0.1.0
+  url: https://github.com/jhd8593/firehose-algorand
+  doc: |
+    Firehose source for the Algorand blockchain.
+    Streams Algorand blocks in protobuf format.
+    Built with Rust and Nodely.io block fetcher.
+
+modules:
+  - name: algorand
+    binary: ./target/release/main
+    type: source
+    inputs: []

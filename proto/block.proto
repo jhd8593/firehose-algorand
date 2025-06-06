@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package firehose.algorand;
+
+message Block {
+    uint64 round = 1;
+    uint64 timestamp = 2;
+    repeated Transaction transactions = 3;
+}
+
+message Transaction {
+    string txn_type = 1;  // Will be converted to txnType in JSON
+    string sender = 2;
+    string receiver = 3;
+    uint64 amount = 4;
+}
