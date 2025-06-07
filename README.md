@@ -148,9 +148,21 @@ substreams pack substreams.yaml
 
 ## 📷 Demo
 
-Watch the Algorand Firehose Substreams in action:
+A live demonstration recording is available in the repository:
 
-[![asciicast](https://asciinema.org/a/algorand-substreams-demo.png)](https://asciinema.org/a/algorand-substreams-demo)
+**File**: `algorand-substreams-demo.cast`
+
+To view the demo online, upload it to asciinema.org:
+```bash
+asciinema upload algorand-substreams-demo.cast
+```
+
+The demo shows:
+- ✅ JWT token authentication working
+- ✅ Substreams connecting to The Graph's endpoint  
+- ✅ Real-time processing of Algorand blocks (50500000-50500003)
+- ✅ JSON output streaming to console
+- ✅ TraceID and processing status
 
 *Live demonstration of streaming Algorand blockchain data with JWT authentication and real-time processing*
 
