@@ -2,28 +2,9 @@ use serde::Serialize;
 use anyhow::Result;
 use serde::Deserialize;
 use prost::Message;
+use std::io::Write;
 
-
-include!(concat!(env!("OUT_DIR"), "/firehose.algorand.rs")); // Generated Protobuf
-
-use crate::pb;
-
-// Conversion from internal Block to protobuf Block
-impl From<Block> for pb::Block {
-    fn from(b: Block) -> Self {
-        pb::Block {
-            round: b.round,
-            timestamp: b.timestamp,
-            transactions: b.transactions.into_iter().map(|t| pb::Transaction {
-                txn_type: t.txn_type,
-                sender: t.sender,
-                receiver: t.receiver,
-                amount: t.amount,
-            }).collect(),
-        }
-    }
-}
-
+use crate::pb::{Block, Transaction};
 
 #[derive(Debug, Deserialize)]
 pub struct AlgorandBlock {
@@ -131,9 +112,9 @@ pub async fn fetch_block_and_output(round: u64) -> Result<()> {
                 txn_type: txn.txn_type,
                 sender: txn.snd.unwrap_or_default(),
                 receiver: match txn.rcv {
-    Some(ref r) if !r.is_empty() => Some(r.clone()),
-    _ => None,
-},
+                    Some(ref r) if !r.is_empty() => Some(r.clone()),
+                    _ => None,
+                },
                 amount: txn.amt.unwrap_or(0),
             }
         }).collect(),

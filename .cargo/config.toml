@@ -1,0 +1,18 @@
+# Force Cargo to use the v2 resolver
+# Note: This is redundant since resolver = "2" is already specified in Cargo.toml
+# [build]
+# resolver = "2"
+
+# Replace the default source with specific versions if needed
+# Commented out vendoring configuration since vendor directory doesn't exist
+# [source.crates-io]
+# replace-with = "vendored-sources"
+
+# [source.vendored-sources]
+# directory = "vendor"
+
+# If you need to use a local version of prost, uncomment and modify this:
+# [source."https://github.com/rust-lang/prost.git"]
+# git = "https://github.com/rust-lang/prost.git"
+# rev = "v0.12.6"
+# replace-with = "vendored-sources"

@@ -1,0 +1,36 @@
+specVersion: v0.1.0
+package:
+  name: algorand
+  version: v0.1.0
+  doc: Substreams for Algorand Firehose
+
+protobuf:
+  files:
+    - proto/sf/algorand/type/v1/type.proto
+    - proto/algorand/firehose/v1/output.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/firehose_algorand.wasm
+
+modules:
+  - name: map_blocks
+    kind: map
+    initialBlock: 50500000
+    inputs:
+      - source: sf.algorand.type.v1.Block
+    output:
+      type: proto:algorand.firehose.v1.Output
+    binary: default
+
+  - name: map_transaction_analytics
+    kind: map
+    initialBlock: 50500000
+    inputs:
+      - source: sf.algorand.type.v1.Block
+    output:
+      type: proto:google.protobuf.StringValue
+    binary: default

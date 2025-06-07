@@ -9,7 +9,7 @@ pub fn algorand_block_stream(start_round: u64, stop_round: u64) -> Pin<Box<dyn S
     Box::pin(stream! {
         for round in start_round..=stop_round {
             match fetch_block_proto(round).await {
-                Ok(block) => yield Ok(block.into()),
+                Ok(block) => yield Ok(block),
                 Err(e) => yield Err(Status::internal(format!("parse error: {}", e))),
             }
         }

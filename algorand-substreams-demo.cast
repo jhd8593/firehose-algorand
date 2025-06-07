@@ -1,0 +1,4 @@
+{"version": 2, "width": 81, "height": 42, "timestamp": 1749256219, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.307478, "o", "\u001b]11;?\u001b\\\u001b[6n"]
+[0.803003, "o", "TraceID: 23bd85088545543ce927175919a8c29b\r\nThis request will be processed in a single stage\r\nBlocks to process in requested range: 3 (0 already cached)\r\n"]
+[0.832434, "o", "^[\\"]

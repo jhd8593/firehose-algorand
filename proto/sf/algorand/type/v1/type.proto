@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package sf.algorand.type.v1;
+
+message Block {
+    BlockHeader header = 1;
+    repeated Transaction transactions = 2;
+}
+
+message BlockHeader {
+    uint64 round = 1;
+    int64 timestamp = 2;
+    bytes previous_block_hash = 3;
+}
+
+message Transaction {
+    TransactionHeader header = 1;
+    bytes note = 2;
+    bytes group = 3;
+    Type type = 4;
+    
+    enum Type {
+        PAYMENT = 0;
+        KEY_REGISTRATION = 1;
+        ASSET_CONFIG = 2;
+        ASSET_TRANSFER = 3;
+        ASSET_FREEZE = 4;
+        APPLICATION_CALL = 5;
+    }
+}
+
+message TransactionHeader {
+    bytes id = 1;
+    bytes sender = 2;
+    uint64 fee = 3;
+    uint64 first_valid = 4;
+    uint64 last_valid = 5;
+}

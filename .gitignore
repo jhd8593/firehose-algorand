@@ -14,6 +14,22 @@
 # Output directory
 /output/
 
+# Binary files and executables
+*.spkg
+substreams_new
+substreams_latest.tar.gz
+substreams_linux_x86_64.tar.gz
+protoc-*.zip
+output.pb
+
+# Temporary files
+=
+naming
+manifest.yaml
+
+# Demo files (keep .cast for documentation)
+# algorand-substreams-demo.cast
+
 # OS generated files
 .DS_Store
 .DS_Store?

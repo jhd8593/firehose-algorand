@@ -2,26 +2,36 @@
 name = "firehose-algorand"
 version = "0.1.0"
 edition = "2021"
+resolver = "2"
+description = "Algorand Firehose Substreams module"
+license = "MIT"
+repository = "https://github.com/your-org/firehose-algorand"
+
+[lib]
+name = "firehose_algorand"
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-async-stream = "0.3"
-tonic = "0.11"
-futures = "0.3"
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
-reqwest = { version = "0.11", features = ["json"] }
+prost = { version = "0.13", features = ["prost-derive"] }
+prost-types = "0.13"
+substreams = "0.6.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-tokio = { version = "1", features = ["full"] }
-prost = { version = "0.11", features = ["prost-derive"] }
-prost-types = "0.11"
-log = "0.4"
+hex = "0.4"
+anyhow = "1.0"
+log = "0.4.27"
+base64 = "0.22"
+tonic = "0.10.2"
+
+# CLI dependencies (only for native builds)
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+clap = { version = "4.5.39", features = ["derive"] }
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros", "time", "full"] }
+futures = "0.3.31"
 env_logger = "0.10"
-prost-serde = "0.3"
+async-stream = "0.3"
+reqwest = { version = "0.11", features = ["json"] }
 
 [build-dependencies]
-prost-build = "0.11"
-
-[[bin]]
-name = "decode"
-path = "src/decode.rs"
+prost-build = "0.13"
+tonic-build = { version = "=0.10.2", features = ["prost"] }

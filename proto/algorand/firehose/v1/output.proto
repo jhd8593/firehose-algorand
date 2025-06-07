@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package algorand.firehose.v1;
+
+message Output {
+  uint64 round = 1;
+  repeated string transaction_ids = 2;
+  uint64 timestamp = 3;
+  string previous_block_hash = 4;
+  repeated Transaction transactions = 5;
+}
+
+message Transaction {
+  string id = 1;
+  string type = 2;
+  string sender = 3;
+  uint64 fee = 4;
+  uint64 first_valid = 5;
+  uint64 last_valid = 6;
+  string note = 7;
+  string group = 8;
+  // Add more transaction fields as needed
+}

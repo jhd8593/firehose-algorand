@@ -1,4 +1,4 @@
-use firehose_algorand::pb::Block;
+use crate::pb::Block;
 use prost::Message;
 use std::fs::File;
 use std::io::Read;
